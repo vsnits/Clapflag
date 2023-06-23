@@ -38,7 +38,7 @@ unsigned long long int clapflag(int n) {
     };
    
    int main() {
-      printf("%llu\n", clapflag(30));
+      printf("%llu\n", clapflag(20));
       return 1;
      };
   
