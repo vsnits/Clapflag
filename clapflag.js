@@ -7,8 +7,8 @@
 function clapflag(n) {
     var len = Math.pow(2, n)
     var p = BigInt(len*len - len)
-    var p1 = new Uint8ClampedArray(len).fill(1)
-    var p2 = new Uint8ClampedArray(len).fill(1)
+    var p1 = new Uint8ClampedArray(len).fill(1, 1)
+    var p2 = new Uint8ClampedArray(len).fill(1, 1)
     
     for(var i = 2; i < len; i++) {
         if(p1[i]) {
