@@ -24,7 +24,7 @@ unsigned long long int clapflag(int n) {
                 p1[e] = 0; continue;
                 }
             for(int e = i - (p % i); e < len; e += i) {
-                /* Notice, that 'e' never is zero! So the first slot does not change! */
+                /* Notice, that 'e' never is zero! So the first slot does not ever change! */
                 p2[e] = 0; continue;
                 }
             }; continue;
