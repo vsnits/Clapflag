@@ -10,9 +10,9 @@
 unsigned long long int clapflag(int n) {
     unsigned long long int len = 1 << n;
     unsigned long long int p = len*len - len;
-    char *p1 = calloc(len, sizeof(char));
-    char *p2 = calloc(len, sizeof(char));
-    if(p1 == NULL || p2 == NULL) { 
+    char *p1 = calloc(len, 1);
+    char *p2 = calloc(len, 1);
+    if(p1 == NULL || p2 == NULL) {
         printf("Memmory allocation failed!\n"); return len; 
         }
     
@@ -37,7 +37,7 @@ unsigned long long int clapflag(int n) {
     };
 
 int main() {
-    printf("%llu\n", clapflag(31));
+    printf("%llu\n", clapflag(29));
     return 1;
     };
 
