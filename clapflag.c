@@ -1,44 +1,43 @@
+
 #include <stdio.h>
 #include <stdlib.h>
-     
-int ipow(unsigned long long int p, int q) {
-    unsigned long long int m = p;
-    for(int i = 1; i < q; i++) { p = p*m; }
-    return p;
-   };
-   
+
+// 288 230 376 151 711 717 at depth 29
+
+#define setbit(A, k) (A[k/32] |= (1 << (k %32)))
+#define getbit(A, k) (A[k/32] & (1 << (k % 32)))
+
 unsigned long long int clapflag(int n) {
-    unsigned long long int len = ipow(2, n);
+    unsigned long long int len = 1 << n;
     unsigned long long int p = len*len - len;
-    int *p1 = calloc(len, sizeof(int));
-    int *p2 = calloc(len, sizeof(int));
-    if(p1 == NULL || p2 == NULL) {
-      printf("Memmory allocation failed!\n"); return len;
-      }
+    char *p1 = calloc(len, sizeof(char));
+    char *p2 = calloc(len, sizeof(char));
+    if(p1 == NULL || p2 == NULL) { 
+        printf("Memmory allocation failed!\n"); return len; 
+        }
     
-    for(int i = 1; i < len; i++) { p1[i] = 1; p2[i] = 1; }
+    setbit(p1, 0); setbit(p2, 0); // Notice, this is important!
     
     for(int i = 2; i < len; i++) {
-        if(p1[i]) {
+        if(!getbit(p1, i)) {
             for(int e = 2*i; e < len; e += i) {
-                p1[e] = 0; continue;
+                setbit(p1, e); continue;
                 }
             for(int e = i - (p % i); e < len; e += i) {
-                /* Notice, that 'e' never is zero! So the first slot does not ever change! */
-                p2[e] = 0; continue;
+                setbit(p2, e); continue;
                 }
             }; continue;
         }
     
     for(unsigned long long int i = len-1; i > 0; i--) {
-        if(p2[i]) { free(p1); free(p2); return i+p; }
+        if(!getbit(p2, i)) { free(p1); free(p2); return i+p; }
         }
-      printf("Nothing found? Was everithing right?\n");
-      return len;
+    printf("Nothing found? Was everithing right?\n");
+    return len;
     };
-   
-   int main() {
-      printf("%llu\n", clapflag(20));
-      return 1;
-     };
-  
+
+int main() {
+    printf("%llu\n", clapflag(31));
+    return 1;
+    };
+
