@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 // 288 230 376 151 711 717 at depth 29
 // Recommended flag -O1
@@ -9,7 +10,7 @@
 #define getbit(A, k) (A[k/32] & (1 << (k % 32)))
 
 unsigned long long int clapflag(int n) {
-    unsigned long long int len = 1 << n;
+    unsigned long long int len = exp2(n);
     unsigned long long int p = len*len - len;
     int *p1 = calloc(len, 1);
     int *p2 = calloc(len, 1);
