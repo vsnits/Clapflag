@@ -4,7 +4,7 @@ Based on classic sieve of eratosthenes, only with simplest operations needed. <b
 O(sqrt(n)* (log log n) / log n) memory and O(n) complexity
 # C version 
 Result depends on hard memory or ssd only!<br>
-Up to 2^62 in possible time (ussually about a minute)
+Up to 2^62 in possible time (usually about a minute)
 # JS version
 Fast calculations up to 2^60, limited by JS engine memory.<br>
 Warning: `Rhino` does NOT support `BigInt`
