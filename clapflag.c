@@ -22,7 +22,7 @@ unsigned long long int clapflag(int n) {
    
     for(unsigned long long int i = 2; i < len; i++) {
         if(!getbit(p1, i)) {
-            for(unsigned long int e = 2*i; e < len; e += i) {
+            for(unsigned long long int e = 2*i; e < len; e += i) {
                 setbit(p1, e); continue;
                 }
             for(unsigned long long int e = i - (p % i); e < len; e += i) {
@@ -40,7 +40,7 @@ unsigned long long int clapflag(int n) {
     };
 
 int main() {
-    printf("%llu\n", clapflag(28));
+    intf("%llu\n", clapflag(28));
     return 1;
     };
 
